@@ -1,0 +1,63 @@
+@charset "utf-8";
+.control-input{ width:100%}
+.form-control{ width:95%;display:inline-block;}
+.control-input .c-red{color:red;display:inline-block; font-size:14px}
+
+.red-star{color:red;display:inline-block; font-size:14px; padding-left:5px}
+.green-star{color:green;display:inline-block; font-size:14px; padding-left:5px}
+
+.mjmh-btn-oper{border:1px solid #dddddd; padding:1px 5px;display:inline-block; color:#5c5c5c;border-radius:5px; margin-right:8px}
+.mjmh-btn-oper:hover{background-color:#00a2ca;color:#fff;text-decoration:none;}
+.mjmh-btn-oper:hover span{color:#fff;}
+.mjmh-btn-oper span{display:inline-block;color:#00a2ca; margin-right:3px;font-size: 14px;}
+
+/*表单列表*/
+
+.form-row{width:100%;display:table; padding:6px 0}
+.form-row .col{display:table-cell;}
+.form-row .col input{font-size:12px}
+.form-row .col select{font-size:12px}
+.form-row .col-key{ width:120px;text-align:center;}
+.form-row .col-key1{ width:150px;text-align:left;}
+.form-row .col-key2{ width:110px;text-align:right;padding-right:10px}
+.form-row .col-key4{ width:150px;text-align:right;padding-right:10px}
+.form-row .col-in{ font-size:12px;width:50px;text-align:center;}
+.form-row .col-in2{ font-size:12px;width:90px;text-align:left;}
+
+
+table.inforlist{width:100%;background-color:#eeeeee;margin:0px;padding:0px; border-spacing:1px; border-collapse:separate}
+table.inforlist td{height:32px; line-height:32px}
+table.inforlist td.i{background-color:#fafafa;width:11%;}
+table.inforlist td.v{background-color:#fff;padding-left:5px;width:22%;}
+
+.logistics-infor{ display:none; width:100%;text-align:left;background-color:#fafafa;padding:10px; margin-left:120px;box-sizing:border-box;
+-moz-box-sizing:border-box; /* Firefox */
+-webkit-box-sizing:border-box}
+.btnUpDown{ padding:0px 5px;}
+#detailItem{display:none;}
+
+
+
+.zone-authority{
+	 padding:10px 0px 10px 9px;
+	 
+}
+
+.pagination .pagination-num {
+    border-width: 1px;
+    border-style: solid;
+    margin: 0 2px;
+    padding: 2px;
+    width: 4em;
+    height: auto;
+    font-size:12px;
+}
+
+.pagination-page-list{
+	font-size:12px;
+}
+
+
+
+
+

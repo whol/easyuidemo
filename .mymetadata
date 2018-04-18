@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="easyuidemo"
+  id="myeclipse.1524038338468"
+  context-root="/easyuidemo"
+  j2ee-spec="1.7"
+  archive="easyuidemo.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebContent" />
+  </attributes>
+</project-module>
+
