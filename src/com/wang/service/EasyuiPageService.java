@@ -1,11 +1,10 @@
 package com.wang.service;
 
-import java.util.HashMap;
-import java.util.List;
-
 import com.wang.model.common.Page;
+import com.wang.model.common.PageData;
+import java.util.List;
 
 public interface EasyuiPageService {
 	
-	List<HashMap<String, Object>> querylistPage(Page page);
+	List<PageData> querylistPage(Page page);
 }

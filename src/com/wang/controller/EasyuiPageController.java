@@ -1,22 +1,21 @@
 package com.wang.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.wang.controller.base.BaseController;
 import com.wang.model.common.Page;
 import com.wang.model.common.PageData;
 import com.wang.service.EasyuiPageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -51,7 +50,25 @@ public class EasyuiPageController extends BaseController  {
 		Page page = getEasyUIAjaxPage();
 		PageData pd = new PageData(this.getRequest());
 		page.setPd(pd);
-		List<HashMap<String, Object>> list = easyuiPageService.querylistPage(page);
+		List<PageData> list = easyuiPageService.querylistPage(page);
 		return this.getEasyUIReturnDataJson(list, page.getTotalResult());
+	}
+
+
+	@RequestMapping(value = "/exportDemo", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public void exportsourceorder(HttpServletRequest request,
+								  HttpServletResponse response) throws Exception {
+		Page page = getEasyUIAjaxPage();
+		page.setExport(true);
+		PageData pd = this.getPageData();
+		page.setPd(pd);
+		String xlstitle = "Demo报表";
+
+		List<PageData> list = easyuiPageService.querylistPage(page);
+		String[] titles = { "ID", "姓名", "年龄", "创建时间"};
+		String[] fields = { "id", "name", "age", "createTime"};
+		this.toListExport(request, response, page, list, xlstitle, titles, fields);
+
 	}
 }

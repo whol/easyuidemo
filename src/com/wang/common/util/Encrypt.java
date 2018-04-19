@@ -1,15 +1,14 @@
 package com.wang.common.util;
 
-import java.security.Key;
-import java.security.MessageDigest;
-import java.util.BitSet;
+import sun.misc.BASE64Decoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.IvParameterSpec;
-
-import sun.misc.BASE64Decoder;
+import java.security.Key;
+import java.security.MessageDigest;
+import java.util.BitSet;
 
 public class Encrypt {
 	private static String TAG = "Encrypt";

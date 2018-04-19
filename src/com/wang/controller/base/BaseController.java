@@ -1,15 +1,20 @@
 package com.wang.controller.base;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
+import com.google.gson.Gson;
+import com.wang.common.util.ExcelUtil;
+import com.wang.model.common.Page;
+import com.wang.model.common.PageData;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.google.gson.Gson;
-import com.wang.model.common.Page;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedOutputStream;
+import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BaseController {
 	/**
@@ -71,6 +76,49 @@ public class BaseController {
 		returnmap.put("result", result);
 		returnmap.put("errinfo", errinfo);
 		return returnmap;
+	}
+
+
+	/**
+	 * 得到分页列表的信息
+	 */
+	public Page getPage() {
+		return new Page();
+	}
+
+	public PageData getPageData() {
+		return new PageData(this.getRequest());
+	}
+
+	public void toListExport(HttpServletRequest request,
+							 HttpServletResponse response, Page page, List<PageData> list,
+							 String fileName, String[] titles, String[] fields) throws Exception {
+		this.toListExport(request, response, page, list, fileName, titles, fields, null);
+	}
+	public void toListExport(HttpServletRequest request,
+							 HttpServletResponse response, Page page, List<PageData> list,
+							 String fileName, String[] titles, String[] fields,HashMap<String, String> dictMap) throws Exception {
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		page.setPd(pd);
+		SXSSFWorkbook wb = ExcelUtil.generateWorkbook2007(list, fileName, titles,
+				fields,dictMap);
+		response.setHeader("Content-Disposition", "attachment;filename="
+				+ new String((fileName + ".xlsx").getBytes("gb2312"),
+				"iso8859-1"));// 指定下载的文件名
+		response.setContentType("application/vnd.ms-excel");
+		OutputStream out = null;
+		try {
+			out = new BufferedOutputStream(response.getOutputStream());
+			wb.write(out);
+		} catch (Exception e) {
+			//e.printStackTrace();
+		} finally {
+			if (out!=null) {
+				try{out.flush();}catch (Exception e) {}
+				try{out.close();}catch (Exception e) {}
+			}
+		}
 	}
 
 }

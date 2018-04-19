@@ -8,6 +8,11 @@
         <setting name="useGeneratedKeys" value="true" /> 
         <setting name="defaultExecutorType" value="REUSE" /> 
     </settings>
+	<typeAliases>
+		<typeAlias type="com.wang.model.common.PageData" alias="pd"/>
+		<!-- 分页 -->
+		<typeAlias type="com.wang.model.common.Page" alias="Page"/>
+	</typeAliases>
 	<plugins>
 		<plugin interceptor="com.wang.dao.common.PagePlugin">
 			<property name="dialect" value="mysql"/>

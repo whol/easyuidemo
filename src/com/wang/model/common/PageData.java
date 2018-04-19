@@ -1,12 +1,7 @@
 package com.wang.model.common;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 public class PageData extends HashMap implements Map {
 	private static final long serialVersionUID = 1L;

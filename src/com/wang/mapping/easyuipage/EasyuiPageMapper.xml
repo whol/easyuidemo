@@ -29,7 +29,7 @@ where 1=1
 </trim>
 </sql>
 
-<select id="querylistPage" resultType="java.util.HashMap"  parameterType="Object">
+<select id="querylistPage" resultType="pd"  parameterType="page">
 	SELECT <include refid="Base_Column_List"/>
 	from easyuipage ep 
 	where 1=1

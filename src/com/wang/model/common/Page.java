@@ -1,5 +1,10 @@
 package com.wang.model.common;
 
+
+/**
+ * 分页.
+ * 
+ */
 public class Page {
 	private int page=1;//第几页,默认显示第1页
 	private int rows=10;//每页的记录数,默认每页只显示10条记录
@@ -8,7 +13,7 @@ public class Page {
 	private int totalResult;	//总记录数
 	private int currentResult;	//当前记录起始索引
 	private boolean entityOrField;	//true:需要分页的地方，传入的参数就是Page实体；false:需要分页的地方，传入的参数所代表的实体拥有Page属性
-	
+	private boolean export=false;
 	
 	private PageData pd = new PageData();
 
@@ -79,4 +84,13 @@ public class Page {
 		this.entityOrField = entityOrField;
 	}
 
+	public boolean isExport() {
+		return export;
+	}
+
+	public void setExport(boolean export) {
+		this.export = export;
+	}
+
 }
+

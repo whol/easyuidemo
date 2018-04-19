@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -60,9 +60,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								class="mjmh-iconfont mjmh-iconfont-search1"></i> &nbsp;查询</a>
 						</t:permission>
 					</div>
-					<!-- <div class="col" style="width:100px; text-align:center">
-				<a style ="height:30px;font-size:12px" id="submit_search" href="javascript:void(0)"  class="btn btn-info" role="button"  onclick="reportExcel()">导出</a>
-				</div> -->
+					<div class="col" style="width:100px; text-align:center">
+                        <a style ="height:30px;font-size:12px" id="submit_search" href="javascript:void(0)"  class="btn btn-info" role="button"  onclick="doExport()">导出</a>
+                    </div>
 					<div class="col"></div>
 				</div>
 			</form>
@@ -85,6 +85,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				age:$('#age').val()
 			});
 		}
+
+        function doExport() {
+            $("#searchform").attr("action", "${ctx}/easyuipage/exportDemo.do");
+            $("#searchform").submit();
+            $("#searchform").attr("action", "");
+        }
+
 		//zhujianfeng add
 		$('#dg').datagrid({
 			fitColumns:false,
